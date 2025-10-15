@@ -1,0 +1,197 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Brand colors (limit 4-5 total) */
+:root {
+  /* Neutrals */
+  --neutral-0: #ffffff;
+  --neutral-900: #0f172a; /* near-black slate */
+  --neutral-200: #e5e7eb; /* light border neutral */
+
+  /* Brand */
+  --brand-primary: #536878; /* elegant slate */
+  --brand-accent: #eae0c8; /* soft beige */
+
+  /* Base tokens mapped to Tailwind semantic tokens */
+  --background: var(--neutral-0);
+  --foreground: var(--neutral-900);
+
+  --card: var(--neutral-0);
+  --card-foreground: var(--neutral-900);
+
+  --popover: var(--neutral-0);
+  --popover-foreground: var(--neutral-900);
+
+  --primary: var(--brand-primary);
+  --primary-foreground: var(--neutral-0);
+
+  --secondary: var(--brand-accent);
+  --secondary-foreground: var(--neutral-900);
+
+  --muted: #f7f7f7;
+  --muted-foreground: #4b5563;
+
+  --accent: var(--brand-accent);
+  --accent-foreground: var(--neutral-900);
+
+  --destructive: #b91c1c;
+  --destructive-foreground: #ffffff;
+
+  --border: var(--neutral-200);
+  --input: var(--neutral-200);
+  --ring: #94a3b8;
+
+  /* Charts (not used heavily here, but kept) */
+  --chart-1: #536878;
+  --chart-2: #eae0c8;
+  --chart-3: #94a3b8;
+  --chart-4: #334155;
+  --chart-5: #9ca3af;
+
+  --radius: 0.75rem;
+
+  /* Sidebar not used; keep aligned */
+  --sidebar: var(--neutral-0);
+  --sidebar-foreground: var(--neutral-900);
+  --sidebar-primary: var(--brand-primary);
+  --sidebar-primary-foreground: var(--neutral-0);
+  --sidebar-accent: var(--brand-accent);
+  --sidebar-accent-foreground: var(--neutral-900);
+  --sidebar-border: var(--neutral-200);
+  --sidebar-ring: #94a3b8;
+}
+
+.dark {
+  --background: #0b1016;
+  --foreground: #f8fafc;
+
+  --card: #0f1620;
+  --card-foreground: #f8fafc;
+
+  --popover: #0f1620;
+  --popover-foreground: #f8fafc;
+
+  --primary: var(--brand-accent);
+  --primary-foreground: #0b1016;
+
+  --secondary: #1f2937;
+  --secondary-foreground: #f8fafc;
+
+  --muted: #111827;
+  --muted-foreground: #93a3b8;
+
+  --accent: #1f2937;
+  --accent-foreground: #f8fafc;
+
+  --destructive: #7f1d1d;
+  --destructive-foreground: #fee2e2;
+
+  --border: #1f2937;
+  --input: #1f2937;
+  --ring: #374151;
+
+  --chart-1: var(--brand-accent);
+  --chart-2: var(--brand-primary);
+  --chart-3: #93a3b8;
+  --chart-4: #cbd5e1;
+  --chart-5: #64748b;
+
+  --sidebar: #0f1620;
+  --sidebar-foreground: #f8fafc;
+  --sidebar-primary: var(--brand-accent);
+  --sidebar-primary-foreground: #0f1620;
+  --sidebar-accent: #111827;
+  --sidebar-accent-foreground: #f8fafc;
+  --sidebar-border: #1f2937;
+  --sidebar-ring: #374151;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  /* Map serif to our Cormorant Garamond for headings */
+  --font-serif: var(--font-cormorant);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 3px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Small luxury touches */
+.container {
+  /* consistent max width and spacing */
+  @apply mx-auto max-w-7xl px-6 md:px-8;
+}
+
+.section-padding {
+  @apply py-16 md:py-24;
+}
+
+.h1-display {
+  @apply font-serif text-4xl md:text-6xl lg:text-7xl leading-tight tracking-tight text-balance;
+}
+.h2-title {
+  @apply font-serif text-3xl md:text-4xl leading-snug tracking-tight;
+}
+.h3-title {
+  @apply font-serif text-2xl md:text-3xl leading-snug;
+}
+.body-lg {
+  @apply text-base md:text-lg leading-relaxed text-pretty;
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 300ms ease;
+}
+.link-underline:hover {
+  background-size: 100% 1px;
+}
